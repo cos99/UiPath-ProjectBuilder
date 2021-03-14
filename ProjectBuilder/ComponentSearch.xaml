@@ -1,0 +1,342 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ComponentSearch" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="componentTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="siteDataTable" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>956,3265.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ComponentSearch_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ComponentSearch" sap:VirtualizedContainerService.HintSize="804,3200.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:String[]" Name="urlArray" />
+      <Variable x:TypeArguments="s:String[]" Name="priceArray" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="762.4,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[urlArray]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[New String(componentTable.Rows(0).ItemArray.Length-1){}]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[priceArray]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[New String(componentTable.Rows(0).ItemArray.Length-1){}]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[siteDataTable]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="762.4,2804.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="712.8,2656" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="671.2,2563.2" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[row.Item(&quot;site_link&quot;).ToString()]">
+              <ui:OpenBrowser.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="637.6,2460.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="componentPrice" />
+                      <Variable x:TypeArguments="sd:DataRow" Name="urlDataRow" />
+                      <Variable x:TypeArguments="sd:DataRow" Name="priceDataRow" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="resultDataTable" />
+                      <Variable x:TypeArguments="x:Int32" Name="arrayIndex" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="596,22.4" sap2010:WorkflowViewState.IdRef="MaximizeWindow_3" />
+                    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[arrayIndex]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="596,2118.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[componentTable.Rows(0).ItemArray]">
+                      <ui:ForEach.Body>
+                        <ActivityAction x:TypeArguments="x:Object">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="560.8,1984" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="componentURL" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[String.IsNullOrWhiteSpace(item.ToString()) Or String.IsNullOrEmpty(item.ToString())]" sap:VirtualizedContainerService.HintSize="519.2,568" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="375.2,418.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                    <ui:MultipleAssign.AssignOperations>
+                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[urlArray(arrayIndex)]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">-</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[priceArray(arrayIndex)]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">-</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                      </scg:List>
+                                    </ui:MultipleAssign.AssignOperations>
+                                  </ui:MultipleAssign>
+                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Item-ul invalid a fost sarit.&quot;]" />
+                                  <ui:Continue sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Continue_2" />
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  _autocompleteSea...'" EmptyField="True" sap:VirtualizedContainerService.HintSize="519.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[item.ToString() + &quot;[k(enter)]&quot;]">
+                              <ui:TypeInto.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2722db57-32c6-4441-be6c-e42bd5d6de11" InformativeScreenshot="d2961260af3cf73d1de681e34f118794" Selector="[row.Item(&quot;selector_search&quot;).ToString()]">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:TypeInto.Target>
+                            </ui:TypeInto>
+                            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="519.2,653.6" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                              <TryCatch.Try>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A '" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target Element="{x:Null}" Id="d68668bc-0e69-461e-9819-7e655e105c86" InformativeScreenshot="3042cd09c3500e302e2270960f6dc51b" Selector="[row.Item(&quot;selector_click&quot;).ToString()]" TimeoutMS="2000">
+                                      <ui:Target.ClippingRegion>
+                                        <ui:Region Rectangle="0, 0, 1, 1" />
+                                      </ui:Target.ClippingRegion>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                              </TryCatch.Try>
+                              <TryCatch.Catches>
+                                <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="400,488.8" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+                                    </ActivityAction.Argument>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="375.2,418.4" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                                        <ui:MultipleAssign.AssignOperations>
+                                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[urlArray(arrayIndex)]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">-</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[priceArray(arrayIndex)]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">-</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                          </scg:List>
+                                        </ui:MultipleAssign.AssignOperations>
+                                      </ui:MultipleAssign>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[item.ToString() + &quot; nu a fost gasit pe site-ul: &quot; + row.Item(&quot;site_name&quot;).ToString()]" />
+                                      <ui:Continue sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                                    </Sequence>
+                                  </ActivityAction>
+                                </Catch>
+                              </TryCatch.Catches>
+                            </TryCatch>
+                            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="url" DisplayName="Get Attribute 'Intermediate D3D Window'" sap:VirtualizedContainerService.HintSize="519.2,96.8" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+                              <ui:GetAttribute.Result>
+                                <OutArgument x:TypeArguments="x:String">[componentURL]</OutArgument>
+                              </ui:GetAttribute.Result>
+                              <ui:GetAttribute.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="89f6c114-5b9f-4002-b1b6-d58e854e6e62">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:GetAttribute.Target>
+                            </ui:GetAttribute>
+                            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'SPAN  our_price_display'" sap:VirtualizedContainerService.HintSize="519.2,107.2" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                              <ui:GetValue.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="666a768d-289b-4beb-ba0c-7d690cd7c2ec" InformativeScreenshot="c525de9b0e4f508c53b95bc2dedc58b6" Selector="[row.Item(&quot;selector_price&quot;).ToString()]">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:GetValue.Target>
+                              <ui:GetValue.Value>
+                                <OutArgument x:TypeArguments="x:String">[componentPrice]</OutArgument>
+                              </ui:GetValue.Value>
+                            </ui:GetValue>
+                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="519.2,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                              <ui:MultipleAssign.AssignOperations>
+                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:String">[urlArray(arrayIndex)]</OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:String">[componentURL]</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:String">[priceArray(arrayIndex)]</OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:String">[componentPrice]</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                </scg:List>
+                              </ui:MultipleAssign.AssignOperations>
+                            </ui:MultipleAssign>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEach.Body>
+                    </ui:ForEach>
+                    <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="596,22.4" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[urlArray]" DataTable="[componentTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="596,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[priceArray]" DataTable="[componentTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="596,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:OpenBrowser.Body>
+            </ui:OpenBrowser>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="762.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;ComponentSearch succes&quot;]" />
+  </Sequence>
+</Activity>
